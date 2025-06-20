@@ -1,148 +1,59 @@
-body {
+/* === App.css or index.css === */
+
+/* Reset */
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  transition: background 0.3s, color 0.3s;
+  padding: 0;
 }
 
-[data-theme="light"] {
-  background: #f8f8f8;
-  color: #111;
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
 }
 
-[data-theme="dark"] {
-  background: #121212;
-  color: #eee;
-}
-
-.app-container {
-  padding: 1rem;
-  max-width: 1200px;
-  margin: auto;
-}
-
-h1.app-title {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.grid {
+/* === Tile Grid === */
+.tile-grid {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap: 2px;
+  grid-template-columns: repeat(8, 1fr); /* Adjust to match original layout: 7, 8, or 14 */
+  gap: 0; /* No gaps between tiles */
+  width: 100%;
+  max-width: 900px;
+  margin: 40px auto;
+  background-color: #fff;
+  border: 1px solid #ddd;
 }
 
 .tile {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
   cursor: pointer;
-  border: 1px solid transparent;
-  transition: transform 0.2s, border-color 0.3s;
+  border: 1px solid #ddd; /* Optional visual separation */
 }
 
 .tile:hover {
-  transform: scale(1.03);
-  border-color: #999;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
 }
 
-.popup {
-  background: rgba(255, 255, 255, 0.95);
-  color: #111;
-  border: 2px solid #ccc;
-  padding: 1rem;
-  margin-top: 1rem;
-  border-radius: 12px;
+/* Optional: Add background image for Bahrain shape */
+.tile-grid-background {
+  background-image: url('/full-map.png');
+  background-size: cover;
+  background-position: center;
 }
 
-[data-theme="dark"] .popup {
-  background: rgba(30, 30, 30, 0.95);
-  color: #eee;
-  border-color: #555;
+/* === Responsive === */
+@media (max-width: 768px) {
+  .tile-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
-button {
-  background: #0077cc;
-  color: white;
-  padding: 0.5rem 1rem;
-  border: none;
-  margin-top: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #005fa3;
-}
-
-.navbar {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
-
-.navbar ul {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-  padding: 0;
-  margin: 0;
-}
-
-.navbar li {
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.prompt-generator {
-  text-align: center;
-  margin: 1rem 0;
-}
-
-.prompt-generator input {
-  padding: 0.5rem;
-  width: 300px;
-  max-width: 80%;
-  margin-right: 0.5rem;
-}
-
-.prompt-generator button {
-  padding: 0.5rem 1rem;
-}
-
-.result-text {
-  margin-top: 0.5rem;
-  font-style: italic;
-  color: #0077cc;
-}
-
-.page {
-  padding: 1rem;
-}
-
-.landmark-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.landmark-item {
-  border: 1px solid #ccc;
-  padding: 0.75rem;
-  border-radius: 10px;
-  width: calc(33.333% - 1rem);
-  background: white;
-  transition: transform 0.2s;
-}
-
-[data-theme="dark"] .landmark-item {
-  background: #222;
-  border-color: #444;
-  color: #eee;
-}
-
-.landmark-item:hover {
-  transform: scale(1.02);
-}
-
-.landmark-item img {
-  width: 100%;
-  border-radius: 6px;
+@media (max-width: 480px) {
+  .tile-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
