@@ -1,59 +1,20 @@
-/* === App.css or index.css === */
-
-/* Reset */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
-}
-
-/* === Tile Grid === */
-.tile-grid {
+.grid {
   display: grid;
-  grid-template-columns: repeat(8, 1fr); /* Adjust to match original layout: 7, 8, or 14 */
-  gap: 0; /* No gaps between tiles */
-  width: 100%;
-  max-width: 900px;
-  margin: 40px auto;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  grid-template-columns: repeat(8, 1fr); /* 8 columns for 56 tiles */
+  gap: 2px;
+  width: fit-content;
+  margin: auto;
 }
 
 .tile {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
+  width: 100px;
+  height: 100px;
   cursor: pointer;
-  border: 1px solid #ddd; /* Optional visual separation */
+  object-fit: cover;
+  border: 1px solid #ccc;
+  transition: transform 0.2s;
 }
 
 .tile:hover {
-  opacity: 0.9;
-  transition: opacity 0.2s ease;
-}
-
-/* Optional: Add background image for Bahrain shape */
-.tile-grid-background {
-  background-image: url('/full-map.png');
-  background-size: cover;
-  background-position: center;
-}
-
-/* === Responsive === */
-@media (max-width: 768px) {
-  .tile-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .tile-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  transform: scale(1.05);
 }
